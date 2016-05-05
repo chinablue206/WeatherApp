@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="arealist">
+        <item> @string/hokkaido </item>
+        <item> @string/tohoku </item>
+        <item> @string/kanto </item>
+        <item> @string/hokuriku </item>
+        <item> @string/kansai </item>
+        <item> @string/chugoku </item>
+        <item> @string/shikoku </item>
+        <item> @string/kyushu </item>
+    </string-array>
+
+    <string-array name="hokkaido_cities">
+        <item> @array/sapporo </item>
+    </string-array>
+
+    <array name="tohoku_cities">
+        <item> @array/aomori </item>
+        <item> @array/iwate </item>
+    </array>
+
+
+    <!-- city list
+         Each city should have 3 info by following order
+         CityName
+         Altitude
+         Latitude -->
+
+    <string-array name="sapporo">
+        <item> @string/sapporo </item>
+        <item> 141.347899 </item>
+        <item> 43.063968 </item>
+    </string-array>
+
+    <string-array name="aomori">
+        <item> @string/aomori </item>
+        <item> 140.740593</item>
+        <item> 40.824623 </item>
+    </string-array>
+    
+    <string-array name="iwate">
+        <item> @string/iwate </item>
+        <item> 141.152667 </item>
+        <item> 39.703531 </item>
+    </string-array>
+
+
+</resources>

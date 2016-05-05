@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WetherApp</string>
+    <string name="hokuriku">北陸</string>
+    <string name="kansai">関西</string>
+    <string name="kanto">関東</string>
+    <string name="kyushu">九州</string>
+    <string name="tohoku">東北</string>
+    <string name="shikoku">四国</string>
+    <string name="chugoku">中国</string>
+    <string name="hokkaido">北海道</string>
+</resources>

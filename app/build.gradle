@@ -1,0 +1,49 @@
+apply plugin: 'com.android.application'
+
+// load api key
+Properties props = new Properties()
+if (rootProject.file("appid.properties").exists()) {
+    props.load(new FileInputStream(rootProject.file("appid.properties")))
+} else {
+    println("No appid.properties in project root. Define dummy")
+    props.setProperty("appid", "dummyappid")
+}
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        applicationId "jp.rsks.wetherapp"
+        minSdkVersion 23
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        debug {
+            buildConfigField("String", "APPID", props.appid)
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+        all {
+        }
+
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:recyclerview-v7:23.3.0'
+    compile 'com.android.support:leanback-v17:23.3.0'
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.github.bumptech.glide:glide:3.4.+'
+    compile 'com.squareup.okhttp3:okhttp:3.2.0'
+    compile 'com.google.code.gson:gson:2.6.1'
+
+}
+
