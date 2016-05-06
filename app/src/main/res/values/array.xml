@@ -24,23 +24,27 @@
     <!-- city list
          Each city should have 3 info by following order
          CityName
+         Flag
          Altitude
          Latitude -->
 
     <string-array name="sapporo">
         <item> @string/sapporo </item>
+        <item> https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Flag_of_Hokkaido_Prefecture.svg/250px-Flag_of_Hokkaido_Prefecture.svg.png </item>
         <item> 141.347899 </item>
         <item> 43.063968 </item>
     </string-array>
 
     <string-array name="aomori">
         <item> @string/aomori </item>
+        <item> https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Flag_of_Aomori_Prefecture.svg/250px-Flag_of_Aomori_Prefecture.svg.png</item>
         <item> 140.740593</item>
         <item> 40.824623 </item>
     </string-array>
     
     <string-array name="iwate">
         <item> @string/iwate </item>
+        <item> https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Flag_of_Iwate_Prefecture.svg/250px-Flag_of_Iwate_Prefecture.svg.png</item>
         <item> 141.152667 </item>
         <item> 39.703531 </item>
     </string-array>

@@ -68,31 +68,19 @@ public class CardPresenter extends Presenter {
 
     @Override
     public void onBindViewHolder(Presenter.ViewHolder viewHolder, Object item) {
-       // Movie movie = (Movie) item;
+        City city = (City) item;
         ImageCardView cardView = (ImageCardView) viewHolder.view;
 
         Log.d(TAG, "onBindViewHolder");
 
-        cardView.setTitleText(((String[])item)[0]);
+        cardView.setTitleText(city.name());
         cardView.setMainImageDimensions(CARD_WIDTH, CARD_HEIGHT);
         Glide.with(viewHolder.view.getContext())
-                .load(Uri.parse("http://www.city.sapporo.jp/somu/kokusai/wwcam/images/flag_of_sapporo.gif"))
+                .load(city.getLogoUri())
                 .centerCrop()
                 .error(mDefaultCardImage)
                 .into(cardView.getMainImageView());
-
-        /*
-        if (movie.getCardImageUrl() != null) {
-            cardView.setTitleText(movie.getTitle());
-            cardView.setContentText(movie.getStudio());
-            cardView.setMainImageDimensions(CARD_WIDTH, CARD_HEIGHT);
-            Glide.with(viewHolder.view.getContext())
-                    .load(movie.getCardImageUrl())
-                    .centerCrop()
-                    .error(mDefaultCardImage)
-                    .into(cardView.getMainImageView());
-        }
-        */
+        
     }
 
     @Override

@@ -23,17 +23,19 @@ public class YahooWeatherLoader extends WeatherLoader {
     private final static String TAG = "YahooWeatherLoader";
     private final String BASEURI = "http://weather.olp.yahooapis.jp/v1/place";
     private final String APPID = BuildConfig.APPID;
-
     private final OkHttpClient client = new OkHttpClient();
 
+    private Listener listener;
+
     @Override
-    public Weather getCurrentWeather(Coordinate coordeinate) {
+    public void getCurrentWeather(@NonNull Coordinate coordinate,
+                                  @NonNull Listener listener) {
+        this.listener = listener;
         try {
-            run(coordeinate);
+            run(coordinate);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
     }
 
     private void run(Coordinate coordinate) throws Exception {
@@ -52,7 +54,7 @@ public class YahooWeatherLoader extends WeatherLoader {
                 if (!response.isSuccessful()){
                     throw new IOException("Unexpected code " + response);
                 }
-                judgeCurrentWeather(parseResponse(response));
+                listener.notify(judgeCurrentWeather(parseResponse(response)));
             }
         });
     }

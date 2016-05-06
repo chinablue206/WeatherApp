@@ -7,10 +7,15 @@ import jp.rsks.weatherapp.util.Coordinate;
  */
 public abstract class WeatherLoader {
 
-    abstract public Weather getCurrentWeather(Coordinate coordinate);
+    abstract public void getCurrentWeather(Coordinate coordinate,
+                                           Listener listener);
 
     public enum Weather {
         SUNNY,
         RAINY
+    }
+
+    public interface Listener {
+        public void notify(Weather weather);
     }
 }

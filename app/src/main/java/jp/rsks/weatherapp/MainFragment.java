@@ -79,8 +79,14 @@ public class MainFragment extends BrowseFragment {
 
         WeatherLoader yh = new YahooWeatherLoader();
         yh.getCurrentWeather(new Coordinate(
-                "139.691704", "35.689521"
-        ));
+                        "139.691704", "35.689521"),
+                new WeatherLoader.Listener() {
+                    @Override
+                    public void notify(WeatherLoader.Weather weather) {
+
+                    }
+                }
+        );
 
         prepareBackgroundManager();
 
@@ -101,16 +107,16 @@ public class MainFragment extends BrowseFragment {
     }
 
     private void loadRows() {
-        Map<String, List<String[]>> list
+        Map<String, List<City>> list
                 = (new CityList(getContext())).getCityList();
 
         mRowsAdapter = new ArrayObjectAdapter(new ListRowPresenter());
         CardPresenter cardPresenter = new CardPresenter();
 
         int i = 0;
-        for(Map.Entry<String, List<String[]>> area: list.entrySet()){
+        for(Map.Entry<String, List<City>> area: list.entrySet()){
             ArrayObjectAdapter listRowAdapter = new ArrayObjectAdapter(cardPresenter);
-            for(String[] city : area.getValue()) {
+            for(City city : area.getValue()) {
                 listRowAdapter.add(city);
             }
             Log.i(TAG, ">>>>" + area.getValue());
