@@ -77,17 +77,6 @@ public class MainFragment extends BrowseFragment {
         Log.i(TAG, "onCreate");
         super.onActivityCreated(savedInstanceState);
 
-        WeatherLoader yh = new YahooWeatherLoader();
-        yh.getCurrentWeather(new Coordinate(
-                        "139.691704", "35.689521"),
-                new WeatherLoader.Listener() {
-                    @Override
-                    public void notify(WeatherLoader.Weather weather) {
-
-                    }
-                }
-        );
-
         prepareBackgroundManager();
 
         setupUIElements();

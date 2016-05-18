@@ -15,13 +15,15 @@
 package jp.rsks.weatherapp;
 
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.support.v17.leanback.widget.ImageCardView;
 import android.support.v17.leanback.widget.Presenter;
 import android.util.Log;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+
+import jp.rsks.weatherapp.net.WeatherLoader;
+import jp.rsks.weatherapp.net.WeatherLoaderFactory;
 
 /*
  * A CardPresenter is used to generate Views and bind Objects to them on demand.
@@ -69,18 +71,24 @@ public class CardPresenter extends Presenter {
     @Override
     public void onBindViewHolder(Presenter.ViewHolder viewHolder, Object item) {
         City city = (City) item;
-        ImageCardView cardView = (ImageCardView) viewHolder.view;
+        final ImageCardView cardView = (ImageCardView) viewHolder.view;
 
         Log.d(TAG, "onBindViewHolder");
 
         cardView.setTitleText(city.name());
         cardView.setMainImageDimensions(CARD_WIDTH, CARD_HEIGHT);
         Glide.with(viewHolder.view.getContext())
-                .load(city.getLogoUri())
+                .load(city.logoUri())
                 .centerCrop()
                 .error(mDefaultCardImage)
                 .into(cardView.getMainImageView());
-        
+
+        WeatherLoader wl = WeatherLoaderFactory.get();
+        wl.init(viewHolder.view.getContext(),
+                ((City) item).coordinate(),
+                cardView.getMainImageView()).loadCurrentWeather();
+
+
     }
 
     @Override

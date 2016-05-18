@@ -28,8 +28,7 @@ public class YahooWeatherLoader extends WeatherLoader {
     private Listener listener;
 
     @Override
-    public void getCurrentWeather(@NonNull Coordinate coordinate,
-                                  @NonNull Listener listener) {
+    public void getCurrentWeather(@NonNull Listener listener) {
         this.listener = listener;
         try {
             run(coordinate);
